@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\Paragraph;
+use App\Models\WPM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WPMs;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,7 @@ Route::post('articles', function(Request $request) {
     return Article::create($request->all);
 });
 
+
 Route::put('articles/{id}', function(Request $request, $id) {
     $article = Article::findOrFail($id);
     $article->update($request->all());
@@ -51,3 +54,10 @@ Route::get('/paragraph', function () {
     
     return $post;
 });
+Route::get('/getWPM', function () {
+    $post = WPM::all();
+    
+    return $post;
+});
+
+Route::post("add", [WPMs::class,'addRec']);
