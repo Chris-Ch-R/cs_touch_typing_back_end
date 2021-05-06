@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParagraphsTable extends Migration
+class CreateLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateParagraphsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paragraphs', function (Blueprint $table) {
-            $table->id();
-            $table->integer('lesson_id')->unsigned();
-            $table->string('paragraphs_content');
-
+        Schema::create('lessons', function (Blueprint $table) {
+            $table->id(); 
+            $table->integer('series_id'); 
+            $table->string('lesson_name');
 
         });
     }
@@ -29,6 +28,6 @@ class CreateParagraphsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paragraphs');
+        Schema::dropIfExists('lessons');
     }
 }

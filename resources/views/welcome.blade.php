@@ -14,6 +14,17 @@
     <div id="newpage">
         <newpage></newpage>
     </div>
+    <div>
+    <?php
+    use App\Models\Series;
+    use App\Models\Lesson;
+        $paragraphs = json_encode(Series::find(1)->lessons);
+        echo $paragraphs;
+        // foreach ($paragraphs as $paragraph) {
+        //     echo $paragraph;
+        // }
+    ?>
+    </div>
 </body>
 
 <script src ="{{ mix('js/app.js') }}"></script>
