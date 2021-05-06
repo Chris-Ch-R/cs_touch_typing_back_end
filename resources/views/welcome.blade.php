@@ -18,11 +18,15 @@
     <?php
     use App\Models\Series;
     use App\Models\Lesson;
-        $paragraphs = json_encode(Series::find(1)->lessons);
+        $paragraphs = Series::get()->first()->lessons[0]->paragraphs;
         echo $paragraphs;
-        // foreach ($paragraphs as $paragraph) {
-        //     echo $paragraph;
-        // }
+        echo "<br>";
+        foreach ($paragraphs as $paragraph) {
+            echo $paragraph;
+            
+        }
+
+        // echo $data;
     ?>
     </div>
 </body>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Paragraph;
+use App\Models\Series;
+use App\Models\Lesson;
 use App\Models\WPM;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,11 +51,30 @@ Route::delete('articles/{id}', function($id) {
     return 204;
 });
 
-Route::get('/paragraph', function () {
-    $post = Paragraph::all();
+Route::get('/series', function () {
     
-    return $post;
+    $posts = Series::all();
+    
+    foreach( $posts as $arr ){
+    
+        $newArr = Paragraph::where("series_id",$arr['id'])->get();
+        
+        $arr['paragraphs'] = $newArr;
+        // echo $arr;
+    }
+   
+    
+    return $posts;
 });
+
+Route::get('/paragraph/{id}', function ($id) {
+
+    $paragraphs = Paragraph::find($id);
+
+    return $paragraphs;
+});
+
+
 Route::get('/getWPM', function () {
     $post = WPM::all();
     

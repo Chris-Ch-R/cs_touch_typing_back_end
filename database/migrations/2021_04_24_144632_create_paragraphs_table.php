@@ -15,9 +15,9 @@ class CreateParagraphsTable extends Migration
     {
         Schema::create('paragraphs', function (Blueprint $table) {
             $table->id();
-            $table->integer('lesson_id')->unsigned();
+            $table->integer('series_id')->unsigned();
+            $table->string('paragraphs_title');
             $table->string('paragraphs_content');
-
 
         });
     }
